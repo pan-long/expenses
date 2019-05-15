@@ -7,6 +7,8 @@ export default class ExpenseIcon extends Component {
         return "local_dining";
       case "Entertainment":
         return "local_movies";
+      case "Transportation":
+        return "local_taxi";
       case "Groceries":
         return "local_grocery_store";
       case "Rental":
