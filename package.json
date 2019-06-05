@@ -1,6 +1,6 @@
 {
   "name": "expenses",
-  "homepage": "https://pan-long.github.io/expenses",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
