@@ -239,7 +239,7 @@ class App extends Component {
               role="toolbar"
             >
               {this.state.signedIn === false &&
-                <a
+                <span
                   className="material-icons mdc-toolbar__icon"
                   aria-label="Sign in"
                   alt="Sign in"
@@ -249,9 +249,9 @@ class App extends Component {
                   }}
                 >
                   perm_identity
-                </a>}
+                </span>}
               {this.state.signedIn &&
-                <a
+                <span
                   className="material-icons mdc-toolbar__icon"
                   aria-label="Sign out"
                   alt="Sign out"
@@ -261,7 +261,7 @@ class App extends Component {
                   }}
                 >
                   exit_to_app
-                </a>}
+                </span>}
             </section>
           </div>
         </header>
