@@ -23,7 +23,6 @@ class App extends Component {
 
     this.state = {
       signedIn: undefined,
-      accounts: [],
       categories: [],
       expenses: [],
       processing: true,
@@ -101,7 +100,7 @@ class App extends Component {
             {
               deleteDimension: {
                 range: {
-                  sheetId: 0,
+                  sheetId: 987794790,
                   dimension: "ROWS",
                   startIndex: expenseRow - 1,
                   endIndex: expenseRow
@@ -145,7 +144,6 @@ class App extends Component {
           ? "0" + now.getDate()
           : now.getDate()}`,
         category: this.state.categories[0],
-        account: this.state.accounts[0]
       }
     });
   }
@@ -155,9 +153,8 @@ class App extends Component {
       id: `Expenses!A${index + 2}`,
       date: value[0],
       description: value[1],
-      category: value[3],
-      amount: value[4].replace(",", ""),
-      account: value[2]
+      category: value[2],
+      amount: value[3].replace(",", "")
     };
   }
 
@@ -168,7 +165,6 @@ class App extends Component {
         2
       )}, ${expense.date.substr(-2)})`,
       expense.description,
-      expense.account,
       expense.category,
       expense.amount
     ];
@@ -199,29 +195,24 @@ class App extends Component {
         spreadsheetId: this.spreadsheetId,
         ranges: [
           "Data!A2:A50",
-          "Data!E2:E50",
-          "Expenses!A2:F",
+          "Expenses!A2:D",
           "Current!H1",
           "Previous!H1"
         ]
       })
       .then(response => {
-        const accounts = response.result.valueRanges[0].values.map(
-          items => items[0]
-        );
-        const categories = response.result.valueRanges[1].values.map(
+        const categories = response.result.valueRanges[0].values.map(
           items => items[0]
         );
         this.setState({
-          accounts: accounts,
           categories: categories,
-          expenses: (response.result.valueRanges[2].values || [])
+          expenses: (response.result.valueRanges[1].values || [])
             .map(this.parseExpense)
             .reverse()
             .slice(0, 30),
           processing: false,
-          currentMonth: response.result.valueRanges[3].values[0][0],
-          previousMonth: response.result.valueRanges[4].values[0][0]
+          currentMonth: response.result.valueRanges[2].values[0][0],
+          previousMonth: response.result.valueRanges[3].values[0][0]
         });
       });
   }
@@ -320,7 +311,6 @@ class App extends Component {
       return (
         <ExpenseForm
           categories={this.state.categories}
-          accounts={this.state.accounts}
           expense={this.state.expense}
           onSubmit={this.handleExpenseSubmit}
           onCancel={this.handleExpenseCancel}

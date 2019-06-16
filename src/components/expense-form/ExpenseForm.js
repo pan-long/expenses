@@ -148,20 +148,6 @@ class ExpenseForm extends Component {
           </div>
         </div>
 
-        <div className="mdc-form-field">
-          <select
-            name="account"
-            className="mdc-select"
-            value={this.props.expense.account}
-            onChange={this.handleInputChange}
-            required
-          >
-            {this.props.accounts.map(account =>
-              <option value={account} key={account}>{account}</option>
-            )}
-          </select>
-        </div>
-
         <div className="mdc-form-field mdc-form-submit">
           <input
             type="submit"
