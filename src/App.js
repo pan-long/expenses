@@ -31,7 +31,6 @@ class App extends Component {
       previousMonth: undefined,
       showExpenseForm: false
     };
-
   }
 
   componentDidMount() {
@@ -54,6 +53,22 @@ class App extends Component {
           );
         });
     });
+
+    window.onpopstate = (event) => {
+      // Only restore if there is an event and it's not processing.
+      if (event.state && !event.state.processing) {
+        this.setState(event.state);
+      }
+    }
+  }
+
+  pushToHistory = () => {
+    // Don't push processing state to history.
+    if (this.state.processing) {
+      return;
+    }
+
+    window.history.pushState(this.state, null, "");
   }
 
   signedInChanged = (signedIn) => {
@@ -73,6 +88,7 @@ class App extends Component {
         this.snackbar.show({
           message: `Expense ${this.state.expense.id ? "updated" : "added"}!`
         });
+        window.history.back();
         this.load();
       },
       response => {
@@ -113,6 +129,7 @@ class App extends Component {
       .then(
         response => {
           this.snackbar.show({ message: "Expense deleted!" });
+          window.history.back()
           this.load();
         },
         response => {
@@ -124,11 +141,12 @@ class App extends Component {
   }
 
   handleExpenseSelect = (expense) => {
-    this.setState({ expense: expense, showExpenseForm: true });
+    this.setState({ expense: expense, showExpenseForm: true },
+      this.pushToHistory);
   }
 
   handleExpenseCancel = () => {
-    this.setState({ showExpenseForm: false });
+    window.history.back();
   }
 
   onExpenseNew() {
@@ -145,7 +163,7 @@ class App extends Component {
           : now.getDate()}`,
         category: this.state.categories[0],
       }
-    });
+    }, this.pushToHistory);
   }
 
   parseExpense(value, index) {
@@ -213,6 +231,8 @@ class App extends Component {
           processing: false,
           currentMonth: response.result.valueRanges[2].values[0][0],
           previousMonth: response.result.valueRanges[3].values[0][0]
+        }, () => {
+            window.history.replaceState(this.state, null, "");
         });
       });
   }
