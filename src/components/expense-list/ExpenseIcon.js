@@ -15,10 +15,10 @@ export default class ExpenseIcon extends Component {
         return "home";
       case "Learning":
         return "book"
-      case "Shopping":
+      case "Appearance":
         return "local_mall";
-      case "Hobbies":
-        return "local_library";
+      case "Travel":
+        return "shopping_basket";
       default:
         return "attach_money";
     }
