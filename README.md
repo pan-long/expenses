@@ -23,7 +23,7 @@ It was inspired by the [expense-manager](https://github.com/mitul45/expense-mana
 You will need a somewhat recent version of [Node](https://nodejs.org/en/) and a place to deploy static HTML under a custom domain (doesn't have to be top level). To get the full offline support with service workers you'll need HTTPS – [CloudFlare](cloudflare.com) works fine or you can use your own certificate.
 
 1) make a copy of [Expense Sheet](https://docs.google.com/spreadsheets/d/1yn8f6tfxJV9WNi-CM2Muj_ebobvoI7UTfY7bVbseyio/edit?usp=sharing) to your drive `File -> Make a copy...`
-2) note the id of your new sheet (it's part of the URL)
+2) note the id of your new sheet (it's part of the URL) and put it in [App.js](https://github.com/pan-long/expenses/blob/master/src/App.js)
 3) clone, install dependencies and build the app:
 
 
