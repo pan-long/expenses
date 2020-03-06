@@ -16,10 +16,10 @@ class App extends Component {
 
     this.clientId =
       process.env.GAPI_CLIENT_ID ||
-      "158651034254-6fvn230jj7bsmvmrck1n4f2ue1oqim5m.apps.googleusercontent.com";
+      "981831589323-21hmfli0bpajvpgnh6e9pbpmsrncrdog.apps.googleusercontent.com";
     this.spreadsheetId =
       process.env.REACT_APP_SHEET_ID ||
-      "1GDPb4cFsq5fwtSebCrgT0qm2n7jLWOZ9CFh4d72dBjI";
+      "1Cg4gbpYgbqKbhTjIIju5p-InWNeglGfu6LkR2d00cgQ";
 
     this.state = {
       signedIn: undefined,
