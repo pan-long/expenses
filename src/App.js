@@ -16,7 +16,7 @@ class App extends Component {
 
     this.clientId =
       process.env.GAPI_CLIENT_ID ||
-      "981831589323-21hmfli0bpajvpgnh6e9pbpmsrncrdog.apps.googleusercontent.com";
+      "981831589323-etlj4jjvqcuqvi0nsursqtuc7q0c2tt4.apps.googleusercontent.com";
     this.spreadsheetId =
       process.env.REACT_APP_SHEET_ID ||
       "1Cg4gbpYgbqKbhTjIIju5p-InWNeglGfu6LkR2d00cgQ";
