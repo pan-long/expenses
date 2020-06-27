@@ -4,6 +4,11 @@
   right: 1rem;
 }
 
+/* Fix fab icon not vertically centered in browser. */
+.mdc-fab__icon {
+  height: 100%;
+}
+
 header.mdc-toolbar {
   background-color: #50d29d;
 }
