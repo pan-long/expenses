@@ -85,7 +85,7 @@ class App extends Component {
       : this.append).bind(this);
     submitAction(this.state.expense).then(
       response => {
-        this.snackbar.show({
+        new MDCSnackbar(document.querySelector('.mdc-snackbar')).show({
           message: `Expense ${this.state.expense.id ? "updated" : "added"}!`
         });
         window.history.back();
@@ -128,7 +128,9 @@ class App extends Component {
       })
       .then(
         response => {
-          this.snackbar.show({ message: "Expense deleted!" });
+          new MDCSnackbar(document.querySelector('.mdc-snackbar')).show({
+            message: "Expense deleted!"
+          });
           window.history.back()
           this.load();
         },
@@ -293,11 +295,6 @@ class App extends Component {
           {this.state.signedIn && this.renderBody()}
         </div>
         <div
-          ref={el => {
-            if (el) {
-              this.snackbar = new MDCSnackbar(el);
-            }
-          }}
           className="mdc-snackbar"
           aria-live="assertive"
           aria-atomic="true"
