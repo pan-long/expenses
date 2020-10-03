@@ -6,8 +6,8 @@
   "dependencies": {
     "material-components-web": "^0.12.1",
     "material-icons": "^0.1.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "eslint-config-google": "^0.13.0",
