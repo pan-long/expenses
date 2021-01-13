@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "core-js": "^3.8.2",
     "material-components-web": "^0.12.1",
     "material-icons": "^0.1.0",
     "react": "^16.13.1",
